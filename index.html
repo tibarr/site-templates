@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шаблоны для бизнеса | Excel & Notion</title>
+    <!-- Шрифты Google Fonts и Font Awesome для иконок -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafc;
+            color: #1e293b;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Шапка */
+        .header {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            padding: 48px 0 56px;
+            border-bottom-left-radius: 32px;
+            border-bottom-right-radius: 32px;
+            margin-bottom: 48px;
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.15);
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .header h1 i {
+            color: #38bdf8;
+            margin-right: 10px;
+        }
+
+        .header .subhead {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            max-width: 650px;
+            font-weight: 400;
+        }
+
+        .header .badge-container {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(4px);
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #e2e8f0;
+        }
+
+        .badge i {
+            margin-right: 8px;
+            color: #38bdf8;
+        }
+
+        /* навигация по категориям */
+        .category-nav {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 16px;
+        }
+
+        .category-btn {
+            background: none;
+            border: none;
+            padding: 10px 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #64748b;
+            cursor: pointer;
+            border-radius: 40px;
+            transition: all 0.2s;
+            background-color: #ffffff;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+
+        .category-btn i {
+            margin-right: 8px;
+        }
+
+        .category-btn.active {
+            background-color: #1e293b;
+            color: white;
+        }
+
+        .category-btn.excel-btn.active {
+            background-color: #1e6f3f;
+        }
+        .category-btn.notion-btn.active {
+            background-color: #000000;
+        }
+
+        /* Секции */
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title i {
+            background-color: #e2e8f0;
+            padding: 12px;
+            border-radius: 50%;
+            color: #0f172a;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 28px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 28px;
+            padding: 24px;
+            box-shadow: 0 10px 25px -8px rgba(0,0,0,0.06);
+            transition: transform 0.25s ease, box-shadow 0.3s;
+            border: 1px solid #f0f2f5;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 35px -12px rgba(0,47,91,0.15);
+            border-color: #d9e2ef;
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .card .excel-icon { color: #1e6f3f; }
+        .card .notion-icon { color: #000000; }
+
+        .card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        .card p {
+            color: #475569;
+            margin-bottom: 20px;
+            flex-grow: 1;
+            font-size: 0.95rem;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: #f1f5f9;
+            color: #334155;
+            padding: 6px 12px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .tag i {
+            font-size: 0.7rem;
+            margin-right: 4px;
+            color: #4b5563;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            border-top: 1px solid #edf2f7;
+            padding-top: 18px;
+        }
+
+        .price {
+            font-weight: 700;
+            color: #0f172a;
+            background: #f1f5f9;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+        }
+
+        .price.free {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .btn {
+            background-color: #ffffff;
+            border: 1.5px solid #cbd5e1;
+            color: #1e293b;
+            padding: 10px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            background-color: #f8fafc;
+            border-color: #94a3b8;
+        }
+
+        .btn-primary {
+            background-color: #1e293b;
+            border-color: #1e293b;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #0f172a;
+        }
+
+        /* подсказки и блок советов */
+        .tips-section {
+            background: linear-gradient(145deg, #f1f5f9 0%, #ffffff 100%);
+            border-radius: 42px;
+            padding: 40px 44px;
+            margin: 60px 0;
+            border: 1px solid #e9eef3;
+        }
+
+        .tips-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 28px;
+        }
+
+        .tip-card {
+            background: white;
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 8px 18px -10px rgba(0,0,0,0.05);
+        }
+
+        .tip-card i {
+            font-size: 2rem;
+            color: #2563eb;
+            margin-bottom: 16px;
+        }
+
+        .tip-card h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .tip-card p {
+            color: #475569;
+            font-size: 0.95rem;
+        }
+
+        /* футер */
+        .footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 40px 0;
+            border-radius: 32px 32px 0 0;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .footer a {
+            color: #cbd5e1;
+            text-decoration: none;
+            margin-left: 24px;
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+
+        /* скрытие секций */
+        .section-hidden {
+            display: none;
+        }
+
+        /* адаптация */
+        @media (max-width: 700px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            .tips-section {
+                padding: 28px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Шапка -->
+<header class="header">
+    <div class="container header-content">
+        <h1>
+            <i class="fas fa-cubes"></i> Бизнес‑шаблоны
+        </h1>
+        <div class="subhead">
+            Готовые решения для малого бизнеса: Excel‑таблицы для учета и Notion‑системы для управления проектами.
+        </div>
+        <div class="badge-container">
+            <span class="badge"><i class="fas fa-file-excel"></i> 12+ шаблонов Excel</span>
+            <span class="badge"><i class="fas fa-notion"></i> 10+ шаблонов Notion</span>
+            <span class="badge"><i class="fas fa-gift"></i> 90% бесплатно</span>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <!-- Кнопки-фильтры (категории) -->
+    <div class="category-nav">
+        <button class="category-btn active" id="showAll"><i class="fas fa-layer-group"></i> Все шаблоны</button>
+        <button class="category-btn excel-btn" id="showExcel"><i class="fas fa-file-excel"></i> Excel / Таблицы</button>
+        <button class="category-btn notion-btn" id="showNotion"><i class="fas fa-notion"></i> Notion проекты</button>
+    </div>
+
+    <!-- СЕКЦИЯ EXCEL -->
+    <div id="excelSection">
+        <div class="section-title">
+            <i class="fas fa-file-excel" style="background: #e6f7ec; color: #1e6f3f;"></i> 
+            <span>Учет в малом бизнесе (Excel / Google Sheets)</span>
+        </div>
+        <div class="card-grid">
+            <!-- Карточка 1 (Excel) -->
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-file-excel excel-icon"></i></div>
+                <h3>Финансовый учёт: ОДДС + ОПиУ</h3>
+                <p>Комплект из четырёх отчётов: движение денег, прибыль/убыток, задолженности и платежный календарь. Всё на одном листе.</p>
+                <div class="card-tags">
+                    <span class="tag"><i class="fas fa-chart-line"></i> ОДДС</span>
+                    <span class="tag">ОПиУ</span>
+                    <span class="tag">календарь</span>
+                </div>
+                <div class="card-footer">
+                    <span class="price free"><i class="fas fa-check-circle"></i> Бесплатно</span>
+                    <a href="#" class="btn"><i class="fas fa-download"></i> Копия</a>
+                </div>
+            </div>
+            <!-- Карточка 2 (Excel) -->
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-table excel-icon"></i></div>
+                <h3>Финмодель интернет‑магазина</h3>
+                <p>Планирование и прогноз: воронка продаж, маржинальность, план‑факт анализ. Помогает избежать кассовых разрывов.</p>
+                <div class="card-tags">
+                    <span class="tag">e‑commerce</span>
+                    <span class="tag">прогноз</span>
+                    <span class="tag">unit‑экономика</span>
+                </div>
+                <div class="card-footer">
+                    <span class="price free"><i class="fas fa-check-circle"></i> Бесплатно</span>
+                    <a href="#" class="btn"><i class="fas fa-download"></i> Копия</a>
+                </div>
+            </div>
+            <!-- Карточка 3 (Excel) -->
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-file-invoice excel-icon"></i></div>
+                <h3>Профессиональные счета</h3>
+                <p>Настраиваемый шаблон счёта с авторасчетом итогов. Добавьте логотип, меняйте цвета — выглядит как дорогой софт.</p>
+                <div class="card-tags">
+                    <span class="tag">счета</span>
+                    <span class="tag">документооборот</span>
+                    <span class="tag">брендирование</span>
+                </div>
+                <div class="card-footer">
+                    <span class="price free"><i class="fas fa-check-circle"></i> Бесплатно</span>
+                    <a href="#" class="btn"><i class="fas fa-download"></i> Скачать</a>
+                </div>
+            </div>
+            <!-- Карточка 4 (Excel) -->
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-balance-scale excel-icon"></i></div>
+                <h3>БДР (ОПиУ) + План‑факт</h3>
+                <p>Сравнение фактических доходов/расходов с бюджетом. Автоматические отклонения по статьям — контроль затрат.</p>
+                <div class="card-tags">
+                    <span class="tag">анализ</span>
+                    <span class="tag">бюджетирование</span>
+                    <span class="tag">отклонения</span>
+                </div>
+                <div class="card-footer">
+                    <span class="price free"><i class="fas fa-check-circle"></i> Бесплатно</span>
+                    <a href="#" class="btn"><i class="fas fa-download"></i> Копия</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- СЕКЦИЯ NOTION -->
+    <div id="notionSection">
+        <div class="section-title">
+            <i class="fas fa-notion" style="background: #e1e4e8; color: #000;"></i>
+            <span>Управление проектами (Notion)</span>
+        </div>
+        <div class="card-grid">
+            <!-- Карточка Notion 1 -->
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-notion notion-icon"></i></div>
+                <h3>Полная система проектов</h3>
+                <p>Базы «Проекты», «Задачи», «Встречи», «Документы» со связями. Автопрогресс, личные дашборды.</p>
+                <div class="card-tags">
+                    <span class="tag">база знаний</span>
+                    <span class="tag">автоматизация</span>
+                    <span class="tag">команда</span>
+                </div>
+                <div class="card-footer">
+                    <span class="price free"><i class="fas fa-check-circle"></i> Бесплатно</span>
+                    <a href="#" class="btn"><i class="fas fa-link"></i> Дубликат</a>
+                </div>
+            </div>
+            <!-- Карточка Notion 2 -->
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-notion notion-icon"></i></div>
+                <h3>Канбан‑доска для команды</h3>
+                <p>Визуальное управление задачами: колонки «Новые», «В работе», «Готово». Можно адаптировать под рекрутинг или разработку.</p>
+                <div class="card-tags">
+                    <span class="tag">канбан</span>
+                    <span class="tag">agile</span>
+                    <span class="tag">воронка</span>
+                </div>
+                <div class="card-footer">
+                    <span class="price free"><i class="fas fa-check-circle"></i> Бесплатно</span>
+                    <a href="#" class="btn"><i class="fas fa-link"></i> Открыть</a>
+                </div>
+            </div>
+            <!-- Карточка Notion 3 -->
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-notion notion-icon"></i></div>
+                <h3>База знаний компании</h3>
+                <p>Вики для сотрудников: онбординг, инструкции, политики, записи встреч. Заменит десятки файлов в Telegram.</p>
+                <div class="card-tags">
+                    <span class="tag">wiki</span>
+                    <span class="tag">онбординг</span>
+                    <span class="tag">SOP</span>
+                </div>
+                <div class="card-footer">
+                    <span class="price free"><i class="fas fa-check-circle"></i> Бесплатно</span>
+                    <a href="#" class="btn"><i class="fas fa-link"></i> Копия</a>
+                </div>
+            </div>
+            <!-- Карточка Notion 4 -->
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-notion notion-icon"></i></div>
+                <h3>Проекты и задачи (минимал)</h3>
+                <p>Канбан, таймлайн и календарь в одном шаблоне. Для небольших команд и личного использования.</p>
+                <div class="card-tags">
+                    <span class="tag">таймлайн</span>
+                    <span class="tag">дедлайны</span>
+                    <span class="tag">GTD</span>
+                </div>
+                <div class="card-footer">
+                    <span class="price free"><i class="fas fa-check-circle"></i> Бесплатно</span>
+                    <a href="#" class="btn"><i class="fas fa-link"></i> Смотреть</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- БЛОК ПОЛЕЗНЫХ СОВЕТОВ -->
+    <div class="tips-section">
+        <div class="tips-title">
+            <i class="fas fa-lightbulb" style="color: #fbbf24;"></i> Полезные советы
+        </div>
+        <div class="tips-grid">
+            <div class="tip-card">
+                <i class="fas fa-file-excel"></i>
+                <h4>Excel vs Google Sheets</h4>
+                <p>Для командной работы выбирайте Google Таблицы — изменения видны мгновенно, не нужно пересылать файлы.</p>
+            </div>
+            <div class="tip-card">
+                <i class="fas fa-notion"></i>
+                <h4>Доступ к Notion в РФ</h4>
+                <p>Понадобится VPN или зеркало. Рекомендуем настраивать шаблон через веб-версию при включенном VPN.</p>
+            </div>
+            <div class="tip-card">
+                <i class="fas fa-rocket"></i>
+                <h4>Старт в Notion</h4>
+                <p>Не усложняйте. Скопируйте шаблон, удалите лишнее и пользуйтесь пару недель, потом доработайте под себя.</p>
+            </div>
+            <div class="tip-card">
+                <i class="fas fa-lock"></i>
+                <h4>Блокировка данных</h4>
+                <p>В Notion можно заблокировать страницу, чтобы никто случайно не сломал структуру. Ищите ··· → Lock.</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Подвал -->
+<footer class="footer">
+    <div class="container footer-content">
+        <div>© 2026 Бизнес‑шаблоны. Простые инструменты для роста.</div>
+        <div>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="#"><i class="fas fa-envelope"></i></a>
+            <a href="#">О проекте</a>
+        </div>
+    </div>
+</footer>
+
+<!-- Небольшой скрипт для фильтрации секций -->
+<script>
+    const excelSection = document.getElementById('excelSection');
+    const notionSection = document.getElementById('notionSection');
+    const btnAll = document.getElementById('showAll');
+    const btnExcel = document.getElementById('showExcel');
+    const btnNotion = document.getElementById('showNotion');
+
+    function showAllSections() {
+        excelSection.style.display = 'block';
+        notionSection.style.display = 'block';
+        btnAll.classList.add('active');
+        btnExcel.classList.remove('active');
+        btnNotion.classList.remove('active');
+    }
+
+    function showExcelOnly() {
+        excelSection.style.display = 'block';
+        notionSection.style.display = 'none';
+        btnAll.classList.remove('active');
+        btnExcel.classList.add('active');
+        btnNotion.classList.remove('active');
+    }
+
+    function showNotionOnly() {
+        excelSection.style.display = 'none';
+        notionSection.style.display = 'block';
+        btnAll.classList.remove('active');
+        btnExcel.classList.remove('active');
+        btnNotion.classList.add('active');
+    }
+
+    btnAll.addEventListener('click', showAllSections);
+    btnExcel.addEventListener('click', showExcelOnly);
+    btnNotion.addEventListener('click', showNotionOnly);
+
+    // дополнительно: активная кнопка при загрузке уже проставлена (All active)
+</script>
+
+<!-- Примечание: все ссылки типа # являются заглушками. Замените на реальные ссылки на шаблоны. -->
+</body>
+</html>
